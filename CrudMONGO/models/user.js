@@ -3,9 +3,16 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
-    fullName: String,
-    email: String,
-    password: String
+    Departamento: String,
+    Codigo_Postal: Number,
+    Pais: String,
+    Estado_civil: String,
+    Ciudad: String,
+    Direccion: String,
+    Nombre_usuario: String,
+    Email: String,
+    Numero_secreto: String,
+    Contraseña: String
 })
 
 // crear modelo

@@ -34,9 +34,13 @@ router.get('/home', function(req, res) {
     });
   }
 });
+
+
 router.get('/login', (req, res) => {
   res.render(loginPage);
 });
+
+
 router.get('/register', (req,res) => {
   res.render(registerPage);
 });
@@ -45,9 +49,9 @@ router.get('/register', (req,res) => {
 
 
 router.post('/register', async (req, res) => {
-  const { fullName, email, password, confirmPassword } = req.body;
+  const { departamento, codpostal, pais, est_civil, ciudad, direccion, usuario, email, secretnumber, contraseña, ccontraseña } = req.body;
   // validacion
-  if (password === confirmPassword) {
+  if (contraseña === ccontraseña) {
     user = await User.findOne({ email: email })
     .then(user => {
       if(user) {
@@ -56,15 +60,22 @@ router.post('/register', async (req, res) => {
           messageClass: "alert-danger"
         });
       } else {
-        const hashedPassword = methods.getHashedPassword(password);
+        const hashedPassword = methods.getHashedPassword(contraseña);
 
 
 
         //creacion e importacion de los datos a Mongo
         const userDB = new User({
-          'fullName': fullName,
-          'email': email,
-          'password': hashedPassword
+          'Departamento': departamento,
+          'Codigo_Postal': codpostal,
+          'Pais': pais,
+          'Estado_civil': est_civil,
+          'Ciudad': ciudad,
+          'Direccion': direccion,
+          'Nombre_usuario': usuario,
+          'Email': email,
+          'Numero_secreto': secretnumber,
+          'Contraseña': hashedPassword
         });
         userDB.save();
         

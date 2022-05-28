@@ -1,5 +1,7 @@
 <div class="row justify-content-md-center">
     <div class="col-md-4">
+
+        <h2>Register form User Account</h2>
         {{#if message}}
             <div class="alert {{messageClass}}">
                 {{message}}
@@ -7,21 +9,50 @@
         {{/if}}
         <form action="/register" method="POST">
             <div class="form-group">
-                FullName
-                <input type="text" name="fullName" id="" class="form-control">
+                Estado/Departamento:
+                <input type="text" name="departamento" id="" class="form-control">
             </div>
             <div class="form-group">
-                Email
+                Código postal:
+                <input type="number" name="codpostal" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                Pais: 
+                <input type="text" name="pais" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                Estado Civil:
+                <input type="text" name="est_civil" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                Ciudad: 
+                <input type="text" name="ciudad" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                Dirección residencial: 
+                <input type="text" name="direccion" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                Nombre del Usuario: 
+                <input type="text" name="usuario" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                Correo Electrónico: 
                 <input type="text" name="email" id="" class="form-control">
             </div>
             <div class="form-group">
-                Password
-                <input type="password" name="password" id="" class="form-control">
+                Numero secreto: 
+                <input type="password" name="secretnumber" id="" class="form-control">
             </div>
             <div class="form-group">
-                Confirm Password
-                <input type="password" name="confirmPassword" id="" class="form-control">
+                Contraseña: 
+                <input type="password" name="contraseña" id="" class="form-control">
             </div>
+            <div class="form-group">
+                Confirmar contraseña: 
+                <input type="password" name="ccontraseña" id="" class="form-control">
+            </div>
+            <br>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>

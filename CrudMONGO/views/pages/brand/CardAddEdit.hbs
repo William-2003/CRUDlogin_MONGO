@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{> header}}
+<h2>{{viewTitle}}</h2>
+<div class="content">
+    <form action="/brand" method="POST">
+        <input type="hidden" name="_id" value="" />
+
+        
+        <div class="form-group">
+        Tipo de tarjeta a registrar: 
+        <input type="text" name="tipo" value=""><br />
+        </div>
+        
+        <div class="form-group">
+        Nombre del titular de la tajeta: 
+        <input type="text" name="nombre_titular" value=""><br />
+        </div>
+
+        <div class="form-group">
+        Número de la tarjeta: 
+        <input type="Number" name="numero_tar" value=""><br />
+        </div>
+
+        <div class="form-group">
+        Fecha de expiracion de la tarjeta: 
+        <input type="Date" name="fecha_exp" value=""><br />
+        </div>
+
+        <div class="form-group">
+        Código de seguridad: 
+        <input type="password" name="cod_seguridad" value=""><br />
+        </div>
+        
+        <button type="submit">Save</button>
+    </form> 
+
+</div>
+    
+</body>
+</html>

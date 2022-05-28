@@ -1,11 +1,11 @@
 const express = require('express');
 var router = express.Router();
-const Brand = require('../models/brand');
+const Brand = require('../models/creditcard');
 
 // rutas
-router.get('/', (req, res) => {
-    res.render('pages/brand/brandAddEdit', {
-        viewTitle: "New Brand"
+router.get('/credit', (req, res) => {
+    res.render('pages/brand/CardAddEdit', {
+        viewTitle: "Add or Update date form Card"
     });
 });
 
@@ -16,10 +16,12 @@ router.post('/', (req, res) => {
     updateBrand(req, res)
 });
 
+
+
 //metodos para insertar y actualizar
 function insertBrand(req, res){
     var brand = new Brand();
-    brand.name = req.body.name;
+    brand.name = req.body.;
     brand.description = req.body.description;
     brand.save(e => {
         if(!e)
@@ -54,6 +56,11 @@ router.get('/brandList', (req, res) => {
     });
 })
 
+
+
+
+
+
 router.get('/:id', (req, res) => {
     Brand.findById(req.params.id, (err, doc) => {
         if(!err){
@@ -64,6 +71,9 @@ router.get('/:id', (req, res) => {
         }
     });
 });
+
+
+
 
 
 router.get('/delete/:id', (req, res) => {
