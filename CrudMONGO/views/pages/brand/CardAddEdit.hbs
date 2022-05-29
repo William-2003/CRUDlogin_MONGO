@@ -10,51 +10,52 @@
 
 </head>
 <body>
-
+    <div>
      {{> header}}
-    <h2>{{viewTitle}}</h2>
+    </div>
     <div class="card text-center">
     <div class="card-header">
-       Agregar o modificar datos de una Tarjeta de Credito
+       <h2>Agregar o modificar datos de una Tarjeta de Credito
     </div>
     <div class="card-body">
        
+        <div class="container">
+            <div class="content-fluid">
+                <form action="/brand" method="POST">
+                    <input type="hidden" name="_id" value=""/>
+                    
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="tipo_tarjeta" value="{{card.tipo_tarjeta}}"></input>
+                        <label for="floatingTextarea"> Tipo de tarjeta a registrar: </label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="nombre_titular" value="{{card.nombre_titular}}"></input>
+                        <label for="floatingTextarea"> Nombre del titular de la tajeta: </label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control" type="Number" name="numero_tarjeta" value="{{card.numero_tarjeta}}"></input>
+                        <label for="floatingTextarea"> Número de la tarjeta: </label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control" type="text" name="fecha_expiracion" value="{{card.fecha_expiracion}}"></input>
+                        <label for="floatingTextarea"> Fecha de expiracion de la tarjeta: </label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input class="form-control" type="password" name="codigo_seguridad" value="{{card.codigo_seguridad}}"></input>
+                        <label for="floatingTextarea"> Código de seguridad: </label>
+                    </div>
+                    <br>
+                    
+                    <button type="submit" class="btn btn-danger">Save</button>
+                </form> 
 
-    <div class="content-fluid">
-        <form action="/brand" method="POST">
-            <input type="hidden" name="_id" value="" />
-            
-            <div class="form-group">
-            Tipo de tarjeta a registrar: 
-            <input type="text" name="tipo_tarjeta" value="{{card.tipo_tarjeta}}"><br />
             </div>
-            
-            <div class="form-group">
-            Nombre del titular de la tajeta: 
-            <input type="text" name="nombre_titular" value="{{card.nombre_titular}}"><br />
-            </div>
-
-            <div class="form-group">
-            Número de la tarjeta: 
-            <input type="Number" name="numero_tarjeta" value="{{card.numero_tarjeta}}"><br />
-            </div>
-
-            <div class="form-group">
-            Fecha de expiracion de la tarjeta: 
-            <input type="text" name="fecha_expiracion" value="{{card.fecha_expiracion}}"><br />
-            </div>
-
-            <div class="form-group">
-            Código de seguridad: 
-            <input type="password" name="codigo_seguridad" value="{{card.codigo_seguridad}}"><br />
-            </div>
-            
-            <button type="submit">Save</button>
-        </form> 
-
+        </div>
     </div>
 
-    </div>
-    
 </body>
 </html>
