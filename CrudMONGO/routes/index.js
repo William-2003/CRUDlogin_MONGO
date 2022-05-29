@@ -52,7 +52,7 @@ router.post('/register', async (req, res) => {
   const { departamento, codpostal, pais, est_civil, ciudad, direccion, usuario, email, secretnumber, contraseña, ccontraseña } = req.body;
   // validacion
   if (contraseña === ccontraseña) {
-    user = await User.findOne({ email: email })
+    user = await User.findOne({ Email: email })
     .then(user => {
       if(user) {
         res.render(registerPage, {
@@ -105,7 +105,7 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const hashedPassword = methods.getHashedPassword(password);
 
-  user = await User.findOne({ email: email, password: hashedPassword })
+  user = await User.findOne({ Email: email, Contraseña:hashedPassword })
     .then(user => {
       if(user){
         const authToken = methods.generateAuthToken();
