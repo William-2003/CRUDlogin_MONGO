@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const cardSchema = new Schema({
-    fecha_expiracion: Date,
+    fecha_expiracion: String,
     tipo_tarjeta: String,
     nombre_titular: String,
-    numero_terjeta: Number,
+    numero_tarjeta: Number,
     codigo_seguridad: Number
 
 });

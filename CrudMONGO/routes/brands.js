@@ -1,6 +1,7 @@
 const express = require('express');
+const Card = require('../models/creditcard');
 var router = express.Router();
-const Brand = require('../models/creditcard');
+const Cardmodule = require('../models/creditcard');
 
 // rutas
 router.get('/credit', (req, res) => {
@@ -11,30 +12,39 @@ router.get('/credit', (req, res) => {
 
 router.post('/', (req, res) => {
     if(req.body._id == '')
-    insertBrand(req, res)
+    insertCard(req, res)
     else
-    updateBrand(req, res)
+    updateCard(req, res)
 });
 
 
 
+
+
 //metodos para insertar y actualizar
-function insertBrand(req, res){
-    var brand = new Brand();
-    brand.name = req.body.;
-    brand.description = req.body.description;
-    brand.save(e => {
+function insertCard(req, res){
+    var card = new Cardmodule();
+    card.tipo_tarjeta = req.body.tipo_tarjeta;
+    card.nombre_titular = req.body.nombre_titular;
+    card.numero_tarjeta = req.body.numero_tarjeta;
+    card.fecha_expiracion = req.body.fecha_expiracion;
+    card.codigo_seguridad =req.body.codigo_seguridad;
+    card.save(e => {
         if(!e)
         res.redirect('brand/brandList');
         else
         console.log("Error", e);
     });
 }
-function updateBrand(req, res){
-    Brand.findOneAndUpdate({_id: req.body._id}, req.body, {new:true}, (err, doc) => {
+
+
+//modificar los registros ya creados
+
+function updateCard(req, res){
+    Card.findOneAndUpdate({_id: req.body._id}, req.body, {new:true}, (err, doc) => {
         if(!err){
             res.render('brand/brandList', {
-                viewTitle: "Update Brand",
+                viewTitle: "Actualizar los datos de una tarjeta",
                 brand: req.body
             })
         } else {
@@ -43,11 +53,14 @@ function updateBrand(req, res){
     });
 }
 
+
+
+//imprimir los datos de la BD en la vista de LISTBRANDS
 router.get('/brandList', (req, res) => {
-    Brand.find((error, docs) => {
+    Card.find((error, docs) => {
         if(!error){
             res.render("pages/brand/brandList", {
-                viewTitle: "Brands",
+                viewTitle: "Tarjetas agregadas",
                 list: docs
             })
         } else {
@@ -62,11 +75,11 @@ router.get('/brandList', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-    Brand.findById(req.params.id, (err, doc) => {
+    Card.findById(req.params.id, (err, doc) => {
         if(!err){
-            res.render('pages/brand/brandAddEdit', {
-                viewTitle: "Update Brand",
-                brand: doc
+            res.render('pages/brand/CardAddEdit', {
+                viewTitle: "Actualizar los datos de una tarjeta.",
+                card: doc
             });
         }
     });
@@ -77,7 +90,7 @@ router.get('/:id', (req, res) => {
 
 
 router.get('/delete/:id', (req, res) => {
-    Brand.findByIdAndRemove(req.params.id, (err) => {
+    Card.findByIdAndRemove(req.params.id, (err) => {
         if(!err){
             res.redirect('/brand/brandList');
         } else {

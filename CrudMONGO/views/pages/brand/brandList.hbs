@@ -1,24 +1,33 @@
-{{> header}}
-<h2>{{viewTitle}}</h2>
-<table border="1">
-    <thead>
-        <th>Name</th>
-        <th>Description</th>
-        <th></th>
-    </thead>
-    <tbody>
-        {{#each list}}
-            <tr>
-                <td>{{this.name}}</td>
-                <td>{{this.description}}</td>
-                <td>
-                    <a href="/brand/{{this._id}}">Edit</a>
-                    <a href="/brand/delete/{{this._id}}"
-                    onclick="return confirm('Desea eliminar el registro?');">
-                    Delete
-                    </a>
-                </td>
-            </tr>
-        {{/each}}
-    </tbody>
-</table>
+<div class="container">
+    {{> header}}
+    <center><h2>{{viewTitle}}</h2></center>
+    <table class="table" border="3">
+        <thead>
+            <th>Tipo</th>
+            <th>Titular de la tarjeta</th>
+            <th>Número de tarjeta</th>
+            <th>Fecha de expiración</th>
+            <th>Código de seguridad</th>
+            <th>Opciones</th>
+        </thead>
+        <tbody>
+            {{#each list}}
+                <tr>
+                    <td>{{this.tipo_tarjeta}}</td>
+                    <td>{{this.nombre_titular}}</td>
+                    <td>{{this.numero_tarjeta}}</td>
+                    <td>{{this.fecha_expiracion}}</td>
+                    <td>{{this.codigo_seguridad}}</td>
+                    <td>
+
+                        <a href="/brand/{{this._id}}">Edit</a>
+                        <a href="/brand/delete/{{this._id}}"
+                        onclick="return confirm('Desea eliminar el registro?');">
+                        Delete
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
